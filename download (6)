@@ -1,0 +1,100 @@
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuthStore } from '../hooks/useAuth';
+import { Eye, EyeOff } from 'lucide-react';
+
+export default function LoginPage() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [showPw, setShowPw] = useState(false);
+  const [error, setError] = useState('');
+  const { login, isLoading } = useAuthStore();
+  const navigate = useNavigate();
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setError('');
+    try {
+      await login(email, password);
+      navigate('/dashboard');
+    } catch {
+      setError('Invalid credentials. Please try again.');
+    }
+  }
+
+  return (
+    <div className="min-h-screen bg-surface ivory-texture flex">
+      {/* Left decorative panel */}
+      <div className="hidden lg:flex w-1/2 bg-primary flex-col justify-between p-12">
+        <Link to="/" className="text-title-lg font-display font-semibold text-white">BANAHub</Link>
+        <div>
+          <p className="font-display font-semibold text-display-xl text-white/10 leading-none select-none">B</p>
+        </div>
+        <div>
+          <p className="font-display italic text-headline-md text-white/80 leading-relaxed mb-4">
+            "The gateway between sovereign capital and the world's highest-growth markets."
+          </p>
+          <p className="text-body-md font-sans text-white/50">BANAHub — Institutional Cross-Border Excellence</p>
+        </div>
+      </div>
+
+      {/* Right form */}
+      <div className="flex-1 flex items-center justify-center p-8">
+        <div className="w-full max-w-sm">
+          <div className="lg:hidden mb-8">
+            <Link to="/" className="text-title-lg font-display font-semibold text-on-surface">BANAHub</Link>
+          </div>
+
+          <p className="section-label mb-2">Institutional Access</p>
+          <h1 className="font-display font-semibold text-headline-lg text-on-surface mb-8">Welcome back</h1>
+
+          {error && (
+            <div className="mb-4 px-4 py-3 bg-error/10 border border-error/20 rounded text-body-md font-sans text-error">
+              {error}
+            </div>
+          )}
+
+          <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+            <div>
+              <label className="section-label block mb-2">Email Address</label>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="name@institution.com"
+                className="input-box w-full"
+                required
+              />
+            </div>
+
+            <div>
+              <label className="section-label block mb-2">Password</label>
+              <div className="relative">
+                <input
+                  type={showPw ? 'text' : 'password'}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="••••••••"
+                  className="input-box w-full pr-10"
+                  required
+                />
+                <button type="button" onClick={() => setShowPw(!showPw)} className="absolute right-3 top-1/2 -translate-y-1/2 text-outline hover:text-on-surface">
+                  {showPw ? <EyeOff size={16} /> : <Eye size={16} />}
+                </button>
+              </div>
+            </div>
+
+            <button type="submit" disabled={isLoading} className="btn-primary w-full py-3 text-base disabled:opacity-60 disabled:cursor-not-allowed">
+              {isLoading ? 'Authenticating...' : 'Access Platform'}
+            </button>
+          </form>
+
+          <p className="text-body-md font-sans text-on-surface/60 text-center mt-6">
+            New institution?{' '}
+            <Link to="/register" className="text-primary font-semibold hover:underline">Apply for access</Link>
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
