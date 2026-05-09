@@ -1,0 +1,82 @@
+[build]
+  publish   = "banahub-v3/public"
+  functions = "banahub-v3/netlify/functions"
+
+# ── Clean URLs ────────────────────────────────────────────────────────
+[[redirects]]
+  from = "/login"             ; to = "/login.html"             ; status = 200
+[[redirects]]
+  from = "/register"          ; to = "/apply.html"             ; status = 200
+[[redirects]]
+  from = "/apply"             ; to = "/apply.html"             ; status = 200
+[[redirects]]
+  from = "/dashboard"         ; to = "/dashboard-business.html"; status = 200
+[[redirects]]
+  from = "/admin"             ; to = "/admin.html"             ; status = 200
+[[redirects]]
+  from = "/about"             ; to = "/about.html"             ; status = 200
+[[redirects]]
+  from = "/platform"          ; to = "/platform.html"          ; status = 200
+[[redirects]]
+  from = "/capital"           ; to = "/capital.html"           ; status = 200
+[[redirects]]
+  from = "/investors"         ; to = "/investors.html"         ; status = 200
+[[redirects]]
+  from = "/pricing"           ; to = "/pricing.html"           ; status = 200
+[[redirects]]
+  from = "/contact"           ; to = "/contact.html"           ; status = 200
+[[redirects]]
+  from = "/privacy"           ; to = "/privacy.html"           ; status = 200
+[[redirects]]
+  from = "/terms"             ; to = "/terms.html"             ; status = 200
+[[redirects]]
+  from = "/disclaimer"        ; to = "/disclaimer.html"        ; status = 200
+
+# ── API → Functions ───────────────────────────────────────────────────
+[[redirects]]
+  from   = "/api/*"
+  to     = "/.netlify/functions/:splat"
+  status = 200
+
+# ── 404 ─────────────────────────────────────────────────────────────
+[[redirects]]
+  from   = "/*"
+  to     = "/404.html"
+  status = 404
+
+# ── Security Headers (all pages) ──────────────────────────────────────
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # HTTPS enforcement
+    Strict-Transport-Security      = "max-age=31536000; includeSubDomains; preload"
+    # Clickjacking protection
+    X-Frame-Options                = "DENY"
+    # MIME sniffing
+    X-Content-Type-Options         = "nosniff"
+    # XSS protection
+    X-XSS-Protection               = "1; mode=block"
+    # Referrer policy
+    Referrer-Policy                = "strict-origin-when-cross-origin"
+    # Permissions
+    Permissions-Policy             = "camera=(), microphone=(), geolocation=(), payment=(self)"
+    # CSP
+    Content-Security-Policy        = "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://accounts.google.com https://challenges.cloudflare.com https://js.stripe.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://api.stripe.com https://accounts.google.com;"
+
+# ── Cache HTML (no cache) ─────────────────────────────────────────────
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# ── Cache static assets ───────────────────────────────────────────────
+[[headers]]
+  for = "/_shared.css"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, stale-while-revalidate=604800"
+
+# ── Block direct admin API without auth ───────────────────────────────
+[[headers]]
+  for = "/api/admin/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
