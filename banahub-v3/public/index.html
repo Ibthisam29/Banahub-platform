@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="BANAHub — The institutional cross-border business ecosystem for companies scaling beyond borders through GTM, capital readiness, investor access, and strategic partnerships."/>
+<meta property="og:title" content="BANAHub | Cross-Border Business Ecosystem"/>
+<meta property="og:description" content="Scale beyond borders. Capital readiness, investor access, GTM strategy, and market expansion for institutional-grade companies."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://www.banahub.com/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="canonical" href="https://www.banahub.com/"/>
+<title>BANAHub | Cross-Border Business Ecosystem</title>
+<link rel="stylesheet" href="_shared.css"/>
+<script src="https://cdn.tailwindcss.com" defer></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet"/>
+<style>
+/* ── Hero ─────────────────────────────────────────────────────── */
+.hero {
+  min-height: 100svh;
+  position: relative;
+  display: flex; align-items: center;
+  overflow: hidden;
+  background: var(--black);
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, #0a1f14 0%, #0d2a1c 40%, #1a2744 100%);
+}
+.hero-pattern {
+  position: absolute; inset: 0; opacity: 0.04;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 48px, rgba(255,255,255,0.6) 48px, rgba(255,255,255,0.6) 49px),
+    repeating-linear-gradient(90deg, transparent, transparent 48px, rgba(255,255,255,0.6) 48px, rgba(255,255,255,0.6) 49px);
+}
+.hero-glow {
+  position: absolute;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+}
+.hero-glow-1 { top:-100px; right:-100px; background:rgba(0,53,39,0.6); }
+.hero-glow-2 { bottom:-200px; left:30%; background:rgba(26,39,68,0.5); }
+
+.hero-content {
+  position: relative; z-index: 2;
+  max-width: var(--container); margin: 0 auto;
+  padding: 120px var(--gutter) 80px;
+  width: 100%;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--emerald-pale); margin-bottom: 28px;
+}
+.hero-eyebrow::before { content:''; width:32px; height:1px; background: var(--emerald-pale); }
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 6.5vw, 88px);
+  font-weight: 500; line-height: 1.02;
+  letter-spacing: -0.03em;
+  color: #fff;
+  max-width: 820px;
+  margin-bottom: 28px;
+}
+.hero-title em { font-style: italic; color: var(--emerald-pale); }
+
+.hero-sub {
+  font-size: clamp(15px, 1.5vw, 18px);
+  color: rgba(255,255,255,0.6);
+  max-width: 520px;
+  line-height: 1.7;
+  margin-bottom: 48px;
+}
+
+.hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 72px; }
+
+.hero-cta-card {
+  display: flex; align-items: center; gap: 14px;
+  padding: 16px 24px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--r-lg);
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  text-decoration: none;
+}
+.hero-cta-card:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.2); }
+.hero-cta-icon { width:40px; height:40px; border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.hero-cta-label { font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:2px; }
+.hero-cta-title { font-size:15px; font-weight:600; color:#fff; }
+
+.hero-stats {
+  display: flex; gap: 40px; flex-wrap: wrap;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+.hero-stat-num { font-family:var(--font-display); font-size:clamp(28px,3vw,40px); font-weight:500; color:#fff; line-height:1; }
+.hero-stat-label { font-size:12px; color:rgba(255,255,255,0.45); margin-top:4px; }
+
+/* ── Region strip ──────────────────────────────────────────────── */
+.region-strip { background: var(--emerald); padding: 0; overflow: hidden; }
+.region-inner { display: flex; }
+.region-item {
+  flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 28px 20px;
+  border-right: 1px solid rgba(255,255,255,0.12);
+  transition: background 0.2s;
+  cursor: pointer;
+}
+.region-item:last-child { border-right: none; }
+.region-item:hover { background: rgba(255,255,255,0.08); }
+.region-flag { font-size: 28px; margin-bottom: 8px; }
+.region-name { font-size: 13px; font-weight: 700; color: #fff; letter-spacing: 0.05em; }
+.region-sub  { font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 2px; }
+
+/* ── Solutions bento ──────────────────────────────────────────── */
+.solutions-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.solution-card {
+  padding: 28px 24px;
+  border-radius: var(--r-lg);
+  border: 1px solid var(--outline-lt);
+  background: var(--white);
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+.solution-card:hover { border-color: var(--emerald); transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+.solution-card.featured { background: var(--emerald); border-color: var(--emerald); color: #fff; grid-column: span 2; }
+.solution-card.featured .sol-icon { background: rgba(255,255,255,0.15); color: #fff; }
+.solution-card.featured .sol-title { color: #fff; }
+.solution-card.featured .sol-desc { color: rgba(255,255,255,0.65); }
+.sol-icon { width:44px; height:44px; border-radius:10px; background:rgba(0,53,39,0.08); color:var(--emerald); display:flex; align-items:center; justify-content:center; margin-bottom:16px; }
+.sol-title { font-family:var(--font-display); font-size:18px; font-weight:500; color:var(--on-surface); margin-bottom:8px; }
+.sol-desc  { font-size:13px; color:var(--on-surface-dim); line-height:1.6; }
+.sol-link  { font-size:12px; font-weight:700; letter-spacing:.06em; margin-top:16px; color:var(--emerald); display:inline-flex; align-items:center; gap:4px; }
+
+/* ── Ecosystem visual ──────────────────────────────────────────── */
+.ecosystem-section { background: var(--black); position: relative; overflow: hidden; }
+.ecosystem-bg { position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(0,53,39,0.3) 0%,transparent 70%); }
+.eco-center {
+  width: 200px; height: 200px; border-radius: 50%;
+  background: var(--emerald);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  box-shadow: 0 0 80px rgba(0,53,39,0.8), 0 0 160px rgba(0,53,39,0.4);
+  margin: 0 auto;
+}
+.eco-orbit {
+  display: grid; grid-template-columns: 1fr 200px 1fr; gap: 20px;
+  align-items: center;
+}
+.eco-nodes { display: flex; flex-direction: column; gap: 14px; }
+.eco-node {
+  padding: 14px 18px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--r-md);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.eco-node:hover { background: rgba(0,53,39,0.3); border-color: var(--emerald-lt); }
+.eco-node-label { font-size:13px; font-weight:600; color:#fff; }
+.eco-node-sub   { font-size:11px; color:rgba(255,255,255,0.45); margin-top:2px; }
+
+/* ── Programs ─────────────────────────────────────────────────── */
+.program-card {
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  border: 1px solid var(--outline-lt);
+  background: var(--white);
+  transition: all 0.25s;
+}
+.program-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); }
+.program-header { padding: 28px 28px 20px; }
+.program-body   { padding: 0 28px 28px; }
+.program-tag    { font-size:10px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; margin-bottom:12px; }
+.program-title  { font-family:var(--font-display); font-size:22px; font-weight:500; margin-bottom:8px; }
+.program-desc   { font-size:13px; color:var(--on-surface-dim); line-height:1.65; margin-bottom:20px; }
+.program-features { display:flex; flex-direction:column; gap:8px; }
+.program-feat   { display:flex; align-items:center; gap:8px; font-size:13px; }
+
+/* ── Capital section ──────────────────────────────────────────── */
+.capital-section { background: linear-gradient(135deg, var(--navy) 0%, var(--graphite) 100%); }
+.capital-stats   { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(255,255,255,0.1); border-radius:var(--r-lg); overflow:hidden; }
+.capital-stat    { padding:32px 28px; background:rgba(255,255,255,0.04); text-align:center; }
+.capital-num     { font-family:var(--font-display); font-size:clamp(32px,4vw,52px); font-weight:500; color:#fff; }
+.capital-label   { font-size:12px; color:rgba(255,255,255,0.5); margin-top:6px; }
+
+/* ── Partners ─────────────────────────────────────────────────── */
+.partners-strip  { overflow:hidden; }
+.partners-track  { display:flex; gap:40px; align-items:center; animation: scroll-left 30s linear infinite; width: max-content; }
+@keyframes scroll-left { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.partner-logo { height:32px; opacity:0.45; filter:grayscale(1); transition:all .2s; flex-shrink:0; object-fit:contain; }
+.partner-logo:hover { opacity:0.9; filter:none; }
+.partner-placeholder { height:32px; width:120px; background:var(--outline-lt); border-radius:4px; opacity:0.3; flex-shrink:0; }
+
+/* ── Pricing ──────────────────────────────────────────────────── */
+.pricing-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+.pricing-card { border-radius:var(--r-xl); border:1.5px solid var(--outline-lt); background:var(--white); padding:36px 32px; position:relative; transition:all .25s; }
+.pricing-card.featured { border-color:var(--emerald); background:var(--emerald); color:#fff; transform:scale(1.02); }
+.pricing-card.featured .price-label, .pricing-card.featured .price-desc { color:rgba(255,255,255,0.65); }
+.pricing-card.featured .price-feat { color:rgba(255,255,255,0.8); }
+.pricing-featured-badge { position:absolute; top:-12px; left:50%; transform:translateX(-50%); background:var(--gold); color:#fff; font-size:10px; font-weight:700; letter-spacing:.1em; padding:4px 14px; border-radius:999px; white-space:nowrap; }
+.price-tier  { font-size:10px; font-weight:800; letter-spacing:.16em; text-transform:uppercase; margin-bottom:16px; color:var(--emerald); }
+.pricing-card.featured .price-tier { color:var(--emerald-pale); }
+.price-num   { font-family:var(--font-display); font-size:clamp(32px,4vw,48px); font-weight:500; color:var(--on-surface); line-height:1; }
+.pricing-card.featured .price-num { color:#fff; }
+.price-label { font-size:12px; color:var(--on-surface-dim); margin-top:4px; margin-bottom:20px; }
+.price-feats { display:flex; flex-direction:column; gap:10px; margin:24px 0; border-top:1px solid rgba(0,0,0,0.06); padding-top:24px; }
+.pricing-card.featured .price-feats { border-color:rgba(255,255,255,0.15); }
+.price-feat  { display:flex; align-items:center; gap:8px; font-size:13px; color:var(--on-surface-dim); }
+.price-desc  { font-size:12px; color:var(--on-surface-dim); margin-bottom:24px; line-height:1.6; }
+
+/* ── Final CTA ────────────────────────────────────────────────── */
+.cta-final { background: linear-gradient(135deg, #0a1f14 0%, #1a2744 100%); position:relative; overflow:hidden; }
+.cta-bg-text { position:absolute; font-family:var(--font-display); font-size:clamp(100px,20vw,240px); font-weight:600; color:rgba(255,255,255,0.025); top:50%; left:50%; transform:translate(-50%,-50%); white-space:nowrap; pointer-events:none; }
+
+/* ── Responsive ─────────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .solutions-grid { grid-template-columns: repeat(2,1fr); }
+  .solution-card.featured { grid-column: span 1; }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .pricing-card.featured { transform: none; }
+  .eco-orbit { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .solutions-grid, .capital-stats { grid-template-columns: 1fr; }
+  .region-inner { flex-direction: column; }
+  .region-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.12); }
+  .hero-ctas { flex-direction: column; }
+  .hero-cta-card { justify-content: flex-start; }
+}
+</style>
+</head>
+
+<body class="texture">
+
+<!-- ═══ NAV ════════════════════════════════════════════════════ -->
+<nav class="nav-bar" id="main-nav">
+  <div class="nav-inner">
+    <span id="nav-logo-link" class="nav-logo" style="cursor:pointer">BANAHub</span>
+    <div class="nav-links">
+      <a href="platform.html"     class="nav-link">Platform</a>
+      <a href="cross-border.html" class="nav-link">Expansion</a>
+      <a href="capital.html"      class="nav-link">Capital</a>
+      <a href="incubation.html"   class="nav-link">Programs</a>
+      <a href="partnerships.html" class="nav-link">Partners</a>
+      <a href="pricing.html"      class="nav-link">Pricing</a>
+    </div>
+    <div class="nav-cta">
+      <a href="login.html"  class="btn btn-ghost btn-sm"   id="nav-login">Login</a>
+      <a href="apply.html"  class="btn btn-primary btn-sm" id="nav-apply">Apply Now</a>
+    </div>
+    <button id="nav-toggle" style="display:none;background:none;border:none;cursor:pointer;padding:8px">
+      <span class="material-symbols-outlined" style="color:var(--on-surface)">menu</span>
+    </button>
+  </div>
+  <div id="mobile-menu" style="display:none;flex-direction:column;gap:2px;padding:12px 20px 20px;background:var(--white);border-top:1px solid var(--outline-lt)">
+    <a href="platform.html"     style="padding:10px;font-size:15px">Platform</a>
+    <a href="cross-border.html" style="padding:10px;font-size:15px">Expansion</a>
+    <a href="capital.html"      style="padding:10px;font-size:15px">Capital</a>
+    <a href="incubation.html"   style="padding:10px;font-size:15px">Programs</a>
+    <a href="pricing.html"      style="padding:10px;font-size:15px">Pricing</a>
+    <a href="contact.html"      style="padding:10px;font-size:15px">Contact</a>
+    <div style="display:flex;gap:10px;padding:12px 0 0;border-top:1px solid var(--outline-lt);margin-top:8px">
+      <a href="login.html" class="btn btn-ghost" style="flex:1;text-align:center">Login</a>
+      <a href="apply.html" class="btn btn-primary" style="flex:1;text-align:center">Apply Now</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══ HERO ════════════════════════════════════════════════════ -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-glow hero-glow-1"></div>
+  <div class="hero-glow hero-glow-2"></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow anim-in">Cross-Border Business Ecosystem</div>
+
+    <h1 class="hero-title anim-up d1">
+      Scale Beyond Borders.<br>
+      <em>Capital. Markets.<br>Momentum.</em>
+    </h1>
+
+    <p class="hero-sub anim-up d2">
+      BANAHub connects institutional-grade companies with the capital, markets, and strategic partners they need to expand across Southeast Asia, the Gulf, and North Asia.
+    </p>
+
+    <!-- 3 CTA paths -->
+    <div class="hero-ctas anim-up d3">
+      <a href="apply.html?type=business" class="hero-cta-card">
+        <div class="hero-cta-icon" style="background:rgba(0,53,39,0.3)">
+          <span class="material-symbols-outlined" style="color:var(--emerald-pale)">business</span>
+        </div>
+        <div>
+          <div class="hero-cta-label">For Companies</div>
+          <div class="hero-cta-title">Apply as a Business</div>
+        </div>
+        <span class="material-symbols-outlined" style="color:rgba(255,255,255,0.3);margin-left:8px">arrow_forward</span>
+      </a>
+
+      <a href="apply.html?type=investor" class="hero-cta-card">
+        <div class="hero-cta-icon" style="background:rgba(115,92,0,0.3)">
+          <span class="material-symbols-outlined" style="color:var(--gold-pale)">account_balance</span>
+        </div>
+        <div>
+          <div class="hero-cta-label">Capital Partners</div>
+          <div class="hero-cta-title">Join as Investor</div>
+        </div>
+        <span class="material-symbols-outlined" style="color:rgba(255,255,255,0.3);margin-left:8px">arrow_forward</span>
+      </a>
+
+      <a href="apply.html?type=partner" class="hero-cta-card">
+        <div class="hero-cta-icon" style="background:rgba(26,39,68,0.5)">
+          <span class="material-symbols-outlined" style="color:rgba(255,255,255,0.7)">handshake</span>
+        </div>
+        <div>
+          <div class="hero-cta-label">Ecosystem</div>
+          <div class="hero-cta-title">Become a Partner</div>
+        </div>
+        <span class="material-symbols-outlined" style="color:rgba(255,255,255,0.3);margin-left:8px">arrow_forward</span>
+      </a>
+    </div>
+
+    <!-- Stats -->
+    <div class="hero-stats anim-up d4">
+      <div>
+        <div class="hero-stat-num">1,284+</div>
+        <div class="hero-stat-label">Institutional Members</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">$4.2B</div>
+        <div class="hero-stat-label">Capital Facilitated</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">12</div>
+        <div class="hero-stat-label">Markets Covered</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">24.8%</div>
+        <div class="hero-stat-label">Avg. Net IRR</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ REGION STRIP ════════════════════════════════════════════ -->
+<section class="region-strip">
+  <div class="region-inner">
+    <div class="region-item" onclick="location.href='cross-border.html#singapore'">
+      <div class="region-flag">🇸🇬</div>
+      <div class="region-name">Singapore HQ</div>
+      <div class="region-sub">Regional Headquarters</div>
+    </div>
+    <div class="region-item" onclick="location.href='cross-border.html#sea'">
+      <div class="region-flag">🌏</div>
+      <div class="region-name">Southeast Asia</div>
+      <div class="region-sub">ASEAN Gateway</div>
+    </div>
+    <div class="region-item" onclick="location.href='cross-border.html#north-asia'">
+      <div class="region-flag">🇯🇵</div>
+      <div class="region-name">Asia North</div>
+      <div class="region-sub">Japan · Korea · Taiwan</div>
+    </div>
+    <div class="region-item" onclick="location.href='cross-border.html#gulf'">
+      <div class="region-flag">🇦🇪</div>
+      <div class="region-name">Gulf Region</div>
+      <div class="region-sub">UAE · KSA · Qatar</div>
+    </div>
+    <div class="region-item" onclick="location.href='cross-border.html#india'">
+      <div class="region-flag">🇮🇳</div>
+      <div class="region-name">India</div>
+      <div class="region-sub">Growth Markets</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SOLUTIONS ═══════════════════════════════════════════════ -->
+<section class="section" style="background:var(--ivory)">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:56px">
+      <div class="t-label" style="color:var(--emerald);margin-bottom:14px">What We Do</div>
+      <h2 class="t-h1" style="color:var(--on-surface);margin-bottom:16px">The Full Ecosystem</h2>
+      <p class="t-body-lg" style="color:var(--on-surface-dim);max-width:560px;margin:0 auto">
+        Every service you need to scale an institutional-grade company across borders — under one roof.
+      </p>
+    </div>
+
+    <div class="solutions-grid">
+      <!-- Featured: Cross-Border Expansion -->
+      <div class="solution-card featured">
+        <div class="sol-icon"><span class="material-symbols-outlined" style="font-size:22px">public</span></div>
+        <div class="sol-title">Cross-Border Expansion</div>
+        <div class="sol-desc">End-to-end market entry strategy, regulatory navigation, and local partner activation across Asia and the Gulf. From feasibility to first revenue.</div>
+        <a href="cross-border.html" class="sol-link" style="color:var(--emerald-pale)">Explore <span class="material-symbols-outlined" style="font-size:14px">arrow_forward</span></a>
+      </div>
+
+      <!-- GTM -->
+      <div class="solution-card">
+        <div class="sol-icon"><span class="material-symbols-outlined" style="font-size:22px">rocket_launch</span></div>
+        <div class="sol-title">GTM & Market Entry</div>
+        <div class="sol-desc">Go-to-market strategy, channel partner identification, and pipeline activation for new markets.</div>
+        <a href="gtm.html" class="sol-link">Explore <span class="material-symbols-outlined" style="font-size:14px">arrow_forward</span></a>
+      </div>
+
+      <!-- Capital Readiness -->
+      <div class="solution-card">
+        <div class="sol-icon"><span class="material-symbols-outlined" style="font-size:22px">account_balance</span></div>
+        <div class="sol-title">Capital Readiness</div>
+        <div class="sol-desc">Fundraising preparation, investor materials, cap table structuring, and financial narrative for institutional investors.</div>
+        <a href="capital.html" class="sol-link">Explore <span class="material-symbols-outlined" style="font-size:14px">arrow_forward</span></a>
+      </div>
+
+      <!-- Investor Access -->
+      <div class="solution-card">
+        <div class="sol-icon"><span class="material-symbols-outlined" style="font-size:22px">currency_exchange</span></div>
+        <div class="sol-title">Investor Access</div>
+        <div class="sol-desc">Curated introductions to family offices, sovereign funds, VCs, and strategic corporates aligned to your raise.</div>
+        <a href="investors.html" class="sol-link">Explore <span class="material-symbols-outlined" style="font-size:14px">arrow_forward</span></a>
+      </div>
+
+      <!-- Portfolio Advisory -->
+      <div class="solution-card">
+        <div class="sol-icon"><span class="material-symbols-outlined" style="font-size:22px">pie_chart</span></div>
+        <div class="sol-title">Portfolio Advisory</div>
+        <div class="sol-desc">Strategic and operational support for portfolio companies post-investment, including governance and reporting.</div>
+        <a href="portfolio.html" class="sol-link">Explore <span class="material-symbols-outlined" style="font-size:14px">arrow_forward</span></a>
+      </div>
+
+      <!-- Incubation -->
+      <div class="solution-card">
+        <div class="sol-icon"><span class="material-symbols-outlined" style="font-size:22px">hub</span></div>
+        <div class="sol-title">Incubation & Programs</div>
+        <div class="sol-desc">Structured acceleration cohorts, summits, and programs for high-potential companies at key growth stages.</div>
+        <a href="incubation.html" class="sol-link">Explore <span class="material-symbols-outlined" style="font-size:14px">arrow_forward</span></a>
+      </div>
+
+      <!-- Solution Providers -->
+      <div class="solution-card">
+        <div class="sol-icon"><span class="material-symbols-outlined" style="font-size:22px">settings_suggest</span></div>
+        <div class="sol-title">Solution Provider Network</div>
+        <div class="sol-desc">Curated legal, compliance, finance, and technology partners embedded in our ecosystem for seamless execution.</div>
+        <a href="providers.html" class="sol-link">Explore <span class="material-symbols-outlined" style="font-size:14px">arrow_forward</span></a>
+      </div>
+
+      <!-- Partnerships -->
+      <div class="solution-card">
+        <div class="sol-icon"><span class="material-symbols-outlined" style="font-size:22px">handshake</span></div>
+        <div class="sol-title">Partnership & Sponsors</div>
+        <div class="sol-desc">Co-host programs, activate co-investment mandates, and build institutional-grade strategic alliances.</div>
+        <a href="partnerships.html" class="sol-link">Explore <span class="material-symbols-outlined" style="font-size:14px">arrow_forward</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ECOSYSTEM MODEL ══════════════════════════════════════════ -->
+<section class="section ecosystem-section">
+  <div class="ecosystem-bg"></div>
+  <div class="container" style="position:relative;z-index:2">
+    <div style="text-align:center;margin-bottom:56px">
+      <div class="t-label" style="color:var(--emerald-pale);margin-bottom:14px">How It Works</div>
+      <h2 class="t-h1" style="color:#fff;margin-bottom:16px">The BANAHub Ecosystem</h2>
+      <p class="t-body-lg" style="color:rgba(255,255,255,0.55);max-width:540px;margin:0 auto">
+        A closed, verified network where capital, companies, and expertise converge under rigorous institutional standards.
+      </p>
+    </div>
+
+    <div class="eco-orbit">
+      <!-- Left nodes -->
+      <div class="eco-nodes">
+        <div class="eco-node"><div class="eco-node-label">🏢 Growth Companies</div><div class="eco-node-sub">Seeking capital & markets</div></div>
+        <div class="eco-node"><div class="eco-node-label">💼 Solution Providers</div><div class="eco-node-sub">Legal, finance, tech, HR</div></div>
+        <div class="eco-node"><div class="eco-node-label">🏛️ Sponsors & Partners</div><div class="eco-node-sub">Co-branding & activation</div></div>
+      </div>
+
+      <!-- Center -->
+      <div class="eco-center">
+        <div class="t-label" style="color:rgba(255,255,255,0.5);font-size:9px">Powered by</div>
+        <div style="font-family:var(--font-display);font-size:28px;font-weight:600;color:#fff;line-height:1.1;text-align:center">BANA<br>Hub</div>
+        <div class="t-label" style="color:rgba(255,255,255,0.5);font-size:9px;margin-top:6px">Platform</div>
+      </div>
+
+      <!-- Right nodes -->
+      <div class="eco-nodes">
+        <div class="eco-node"><div class="eco-node-label">🏦 Sovereign Funds</div><div class="eco-node-sub">Institutional capital</div></div>
+        <div class="eco-node"><div class="eco-node-label">👨‍👩‍👧 Family Offices</div><div class="eco-node-sub">Strategic investors</div></div>
+        <div class="eco-node"><div class="eco-node-label">🌍 Market Networks</div><div class="eco-node-sub">SEA · Gulf · Asia</div></div>
+      </div>
+    </div>
+
+    <!-- Process steps -->
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,0.08);border-radius:var(--r-lg);overflow:hidden;margin-top:64px">
+      <div style="padding:28px 24px;background:rgba(255,255,255,0.04)">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.12em;color:var(--emerald-pale);margin-bottom:10px">01 · APPLY</div>
+        <div style="font-size:16px;font-weight:500;color:#fff;margin-bottom:8px">Institutional Vetting</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.45);line-height:1.6">KYC, credentials, and mandate review by our advisory board</div>
+      </div>
+      <div style="padding:28px 24px;background:rgba(255,255,255,0.04)">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.12em;color:var(--emerald-pale);margin-bottom:10px">02 · MATCH</div>
+        <div style="font-size:16px;font-weight:500;color:#fff;margin-bottom:8px">AI-Powered Matching</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.45);line-height:1.6">Smart mandate alignment across companies, investors, and providers</div>
+      </div>
+      <div style="padding:28px 24px;background:rgba(255,255,255,0.04)">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.12em;color:var(--emerald-pale);margin-bottom:10px">03 · ENGAGE</div>
+        <div style="font-size:16px;font-weight:500;color:#fff;margin-bottom:8px">Structured Access</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.45);line-height:1.6">Request-based access to restricted data, NDAs, and deal rooms</div>
+      </div>
+      <div style="padding:28px 24px;background:rgba(255,255,255,0.04)">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.12em;color:var(--emerald-pale);margin-bottom:10px">04 · SCALE</div>
+        <div style="font-size:16px;font-weight:500;color:#fff;margin-bottom:8px">Cross-Border Growth</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.45);line-height:1.6">From market entry to capital close to portfolio support</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ACTIVE PROGRAMS ══════════════════════════════════════════ -->
+<section class="section" style="background:var(--ivory-dim)">
+  <div class="container">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:48px;flex-wrap:wrap;gap:16px">
+      <div>
+        <div class="t-label" style="color:var(--emerald);margin-bottom:12px">Programs & Cohorts</div>
+        <h2 class="t-h1">Active Programs</h2>
+      </div>
+      <a href="incubation.html" class="btn btn-secondary">View All Programs</a>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px">
+      <!-- Program 1 -->
+      <div class="program-card">
+        <div class="program-header" style="background:linear-gradient(135deg,var(--emerald),var(--navy))">
+          <div class="program-tag" style="color:var(--emerald-pale)">● Active Enrollment</div>
+          <div class="program-title" style="color:#fff">SEA Expansion Cohort</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.6)">12-week cross-border acceleration</div>
+        </div>
+        <div class="program-body">
+          <div class="program-desc">Institutional market entry for companies expanding into ASEAN's digital economy. Direct regulatory access and family office introductions included.</div>
+          <div class="program-features">
+            <div class="program-feat"><span class="material-symbols-outlined" style="font-size:16px;color:var(--emerald)">check_circle</span> Regulatory pathway support</div>
+            <div class="program-feat"><span class="material-symbols-outlined" style="font-size:16px;color:var(--emerald)">check_circle</span> Family office network access</div>
+            <div class="program-feat"><span class="material-symbols-outlined" style="font-size:16px;color:var(--emerald)">check_circle</span> GTM advisory sessions</div>
+          </div>
+          <a href="incubation.html#sea-cohort" class="btn btn-primary" style="margin-top:24px;width:100%;justify-content:center">Apply for Cohort</a>
+        </div>
+      </div>
+
+      <!-- Program 2 -->
+      <div class="program-card">
+        <div class="program-header" style="background:linear-gradient(135deg,var(--navy),var(--graphite))">
+          <div class="program-tag" style="color:var(--gold-pale)">◆ Upcoming · Nov 2025</div>
+          <div class="program-title" style="color:#fff">Gulf Tech Bridge</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.6)">Riyadh · Abu Dhabi · Singapore</div>
+        </div>
+        <div class="program-body">
+          <div class="program-desc">Connecting sovereign wealth funds and family offices in the Gulf with Asia's most promising technology companies and infrastructure mandates.</div>
+          <div class="program-features">
+            <div class="program-feat"><span class="material-symbols-outlined" style="font-size:16px;color:var(--gold)">check_circle</span> Sovereign fund intros</div>
+            <div class="program-feat"><span class="material-symbols-outlined" style="font-size:16px;color:var(--gold)">check_circle</span> Deal room access</div>
+            <div class="program-feat"><span class="material-symbols-outlined" style="font-size:16px;color:var(--gold)">check_circle</span> NDA-protected mandates</div>
+          </div>
+          <a href="incubation.html#gulf-bridge" class="btn btn-secondary" style="margin-top:24px;width:100%;justify-content:center">Request Prospectus</a>
+        </div>
+      </div>
+
+      <!-- Program 3 -->
+      <div class="program-card">
+        <div class="program-header" style="background:linear-gradient(135deg,#2d3142,#1a2744)">
+          <div class="program-tag" style="color:rgba(255,255,255,0.5)">Summits · 2025</div>
+          <div class="program-title" style="color:#fff">Institutional Summits</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.6)">Tokyo · London · Dubai</div>
+        </div>
+        <div class="program-body">
+          <div class="program-desc">Exclusive closed-door gatherings for institutional leaders, capital partners, and sovereign wealth managers. By invitation only.</div>
+          <div class="program-features">
+            <div class="program-feat"><span class="material-symbols-outlined" style="font-size:16px;color:var(--navy)">check_circle</span> Sep 24 — Asia North Capital Summit</div>
+            <div class="program-feat"><span class="material-symbols-outlined" style="font-size:16px;color:var(--navy)">check_circle</span> Oct 12 — Digital Finance Roundtable</div>
+            <div class="program-feat"><span class="material-symbols-outlined" style="font-size:16px;color:var(--navy)">check_circle</span> Nov 5 — Gulf Infrastructure Forum</div>
+          </div>
+          <a href="incubation.html#summits" class="btn btn-ghost" style="margin-top:24px;width:100%;justify-content:center">Register Interest</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CAPITAL READINESS ════════════════════════════════════════ -->
+<section class="section capital-section">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
+      <div>
+        <div class="t-label" style="color:rgba(255,255,255,0.4);margin-bottom:14px">Capital Readiness</div>
+        <h2 class="t-h1" style="color:#fff;margin-bottom:20px">Raise-Ready.<br>From Day One.</h2>
+        <p class="t-body-lg" style="color:rgba(255,255,255,0.55);margin-bottom:36px">
+          We prepare companies for institutional capital — financial modelling, investor decks, data room structuring, and warm introductions to the right capital partners at the right stage.
+        </p>
+        <div style="display:flex;gap:14px;flex-wrap:wrap">
+          <a href="capital.html" class="btn btn-white">Capital Readiness →</a>
+          <a href="investors.html" class="btn" style="background:rgba(255,255,255,0.1);color:#fff;border:1.5px solid rgba(255,255,255,0.2)">Investor Access →</a>
+        </div>
+      </div>
+      <div>
+        <div class="capital-stats">
+          <div class="capital-stat"><div class="capital-num">$4.2B</div><div class="capital-label">Capital Facilitated</div></div>
+          <div class="capital-stat"><div class="capital-num">87%</div><div class="capital-label">Raise Success Rate</div></div>
+          <div class="capital-stat"><div class="capital-num">48hrs</div><div class="capital-label">Avg. First Intro</div></div>
+          <div class="capital-stat"><div class="capital-num">Series A–C</div><div class="capital-label">Primary Focus</div></div>
+          <div class="capital-stat"><div class="capital-num">$5M–$100M</div><div class="capital-label">Typical Ticket Range</div></div>
+          <div class="capital-stat"><div class="capital-num">12 Markets</div><div class="capital-label">Investor Reach</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PARTNERS & SPONSORS ══════════════════════════════════════ -->
+<section class="section" style="background:var(--ivory)">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:48px">
+      <div class="t-label" style="color:var(--on-surface-dim);margin-bottom:12px">Partners & Sponsors</div>
+      <h2 class="t-h2" style="color:var(--on-surface)">Trusted by Institutional Leaders</h2>
+    </div>
+    <!-- Partner logos (placeholders — replaced by admin) -->
+    <div style="position:relative;overflow:hidden;padding:16px 0">
+      <div style="display:flex;gap:48px;align-items:center;flex-wrap:wrap;justify-content:center">
+        <div class="partner-placeholder" style="height:36px;width:140px;border-radius:6px"></div>
+        <div class="partner-placeholder" style="height:36px;width:100px;border-radius:6px"></div>
+        <div class="partner-placeholder" style="height:36px;width:160px;border-radius:6px"></div>
+        <div class="partner-placeholder" style="height:36px;width:120px;border-radius:6px"></div>
+        <div class="partner-placeholder" style="height:36px;width:140px;border-radius:6px"></div>
+        <div class="partner-placeholder" style="height:36px;width:110px;border-radius:6px"></div>
+        <div class="partner-placeholder" style="height:36px;width:130px;border-radius:6px"></div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:36px">
+      <a href="partnerships.html" class="btn btn-secondary">Become a Partner</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PRICING TEASER ═══════════════════════════════════════════ -->
+<section class="section" style="background:var(--ivory-dim)">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:56px">
+      <div class="t-label" style="color:var(--emerald);margin-bottom:14px">Pricing & Engagement</div>
+      <h2 class="t-h1" style="margin-bottom:16px">Structured for Institutions</h2>
+      <p class="t-body-lg" style="color:var(--on-surface-dim);max-width:520px;margin:0 auto">
+        Transparent engagement models designed for companies at every stage of cross-border growth.
+      </p>
+    </div>
+
+    <div class="pricing-grid">
+      <!-- Starter -->
+      <div class="pricing-card">
+        <div class="price-tier">Starter</div>
+        <div class="price-num">$4,500</div>
+        <div class="price-label">/ month · 3-month minimum</div>
+        <div class="price-desc">Market entry advisory and investor readiness preparation for early-stage cross-border expansion.</div>
+        <div class="price-feats">
+          <div class="price-feat"><span class="material-symbols-outlined" style="font-size:16px;color:var(--emerald)">check</span> GTM strategy session</div>
+          <div class="price-feat"><span class="material-symbols-outlined" style="font-size:16px;color:var(--emerald)">check</span> Investor deck review</div>
+          <div class="price-feat"><span class="material-symbols-outlined" style="font-size:16px;color:var(--emerald)">check</span> 2 curated intros/month</div>
+          <div class="price-feat"><span class="material-symbols-outlined" style="font-size:16px;color:var(--emerald)">check</span> Platform access</div>
+        </div>
+        <a href="pricing.html" class="btn btn-secondary" style="width:100%;justify-content:center">Get Started</a>
+      </div>
+
+      <!-- Growth (Featured) -->
+      <div class="pricing-card featured">
+        <div class="pricing-featured-badge">Most Popular</div>
+        <div class="price-tier">Growth</div>
+        <div class="price-num" style="color:#fff">$9,500</div>
+        <div class="price-label">/ month · 6-month engagement</div>
+        <div class="price-desc">Full cross-border expansion suite with active investor introductions and market activation.</div>
+        <div class="price-feats">
+          <div class="price-feat"><span class="material-symbols-outlined" style="font-size:16px">check</span> Everything in Starter</div>
+          <div class="price-feat"><span class="material-symbols-outlined" style="font-size:16px">check</span> Market entry execution</div>
+          <div class="price-feat"><span class="material-symbols-outlined" style="font-size:16px">check</span> 5 curated intros/month</div>
+          <div class="price-feat"><span class="material-symbols-outlined" style="font-size:16px">check</span> Capital mandate matching</div>
+          <div class="price-feat"><span class="material-symbols-outlined" style="font-size:16px">check</span> Program cohort access</div>
+          <div class="price-feat"><span class="material-symbols-outlined" style="font-size:16px">check</span> Quarterly board briefing</div>
+        </div>
+        <a href="pricing.html" class="btn btn-white" style="width:100%;justify-content:center">Apply for Growth</a>
+      </div>
+
+      <!-- Enterprise -->
+      <div class="pricing-card">
+        <div class="price-tier">Enterprise</div>
+        <div class="price-num">Custom</div>
+        <div class="price-label">Bespoke engagement</div>
+        <div class="price-desc">Full-service institutional advisory with dedicated relationship manager and portfolio integration.</div>
+        <div class="price-feats">
+          <div class="price-feat"><span class="material-symbols-outlined" style="font-size:16px;color:var(--emerald)">check</span> Everything in Growth</div>
+          <div class="price-feat"><span class="material-symbols-outlined" style="font-size:16px;color:var(--emerald)">check</span> Dedicated RM</div>
+          <div class="price-feat"><span class="material-symbols-outlined" style="font-size:16px;color:var(--emerald)">check</span> Portfolio advisory</div>
+          <div class="price-feat"><span class="material-symbols-outlined" style="font-size:16px;color:var(--emerald)">check</span> Incubation access</div>
+          <div class="price-feat"><span class="material-symbols-outlined" style="font-size:16px;color:var(--emerald)">check</span> White-label programs</div>
+        </div>
+        <a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center">Contact Us</a>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:32px">
+      <a href="pricing.html" style="font-size:14px;color:var(--emerald);font-weight:600;text-decoration:underline;text-underline-offset:3px">View full pricing & add-ons →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FINAL CTA ════════════════════════════════════════════════ -->
+<section class="section cta-final">
+  <div class="cta-bg-text">BANAHub</div>
+  <div class="container" style="position:relative;z-index:2;text-align:center">
+    <div class="t-label" style="color:var(--emerald-pale);margin-bottom:20px">Ready to Scale?</div>
+    <h2 class="t-h1" style="color:#fff;margin-bottom:20px;max-width:640px;margin-left:auto;margin-right:auto">
+      Join the Institutional Cross-Border Ecosystem
+    </h2>
+    <p class="t-body-lg" style="color:rgba(255,255,255,0.55);max-width:480px;margin:0 auto 48px">
+      Companies, investors, and partners — join the most rigorous business ecosystem in Asia and the Gulf.
+    </p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+      <a href="apply.html" class="btn btn-primary btn-lg">Apply Now</a>
+      <a href="contact.html" class="btn btn-lg" style="background:rgba(255,255,255,0.1);color:#fff;border:1.5px solid rgba(255,255,255,0.2)">Schedule a Call</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══════════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">BANAHub</div>
+        <div class="footer-tagline">The institutional cross-border business ecosystem for companies scaling beyond borders.</div>
+        <div style="margin-top:24px;display:flex;gap:12px">
+          <a href="https://linkedin.com" class="btn btn-ghost btn-sm" style="color:rgba(255,255,255,0.5);border-color:rgba(255,255,255,0.15)">LinkedIn</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-heading">Platform</div>
+        <a href="platform.html"     class="footer-link">Platform Overview</a>
+        <a href="cross-border.html" class="footer-link">Cross-Border Expansion</a>
+        <a href="gtm.html"          class="footer-link">GTM & Market Entry</a>
+        <a href="capital.html"      class="footer-link">Capital Readiness</a>
+        <a href="investors.html"    class="footer-link">Investor Access</a>
+      </div>
+      <div>
+        <div class="footer-heading">Programs</div>
+        <a href="incubation.html"   class="footer-link">Incubation & Cohorts</a>
+        <a href="portfolio.html"    class="footer-link">Portfolio Advisory</a>
+        <a href="enablement.html"   class="footer-link">Industry Enablement</a>
+        <a href="providers.html"    class="footer-link">Solution Providers</a>
+        <a href="partnerships.html" class="footer-link">Partnerships</a>
+      </div>
+      <div>
+        <div class="footer-heading">Company</div>
+        <a href="about.html"   class="footer-link">About BANAHub</a>
+        <a href="pricing.html" class="footer-link">Pricing</a>
+        <a href="apply.html"   class="footer-link">Apply / Join</a>
+        <a href="contact.html" class="footer-link">Contact</a>
+        <a href="login.html"   class="footer-link">Login</a>
+      </div>
+      <div>
+        <div class="footer-heading">Legal</div>
+        <a href="privacy.html"     class="footer-link">Privacy Policy</a>
+        <a href="terms.html"       class="footer-link">Terms of Use</a>
+        <a href="disclaimer.html"  class="footer-link">Disclaimer</a>
+        <a href="disclaimer.html"  class="footer-link">Risk Notice</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-disclaimer">
+        BANAHub (Bana Private Limited) is not a licensed financial adviser, capital markets services provider, broker-dealer, or investment manager unless otherwise stated in writing. Information on this platform is provided for business development, advisory, market expansion, and investor-readiness purposes only. Nothing on this website constitutes financial advice, investment advice, an offer to sell securities, or solicitation to invest. All investment decisions must be made independently with appropriate professional advice. © 2025 BANAHub · Singapore.
+      </div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.25);white-space:nowrap">© 2025 Bana Private Limited</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ ADMIN SECRET MODAL ═══════════════════════════════════════ -->
+<div id="admin-modal-overlay" onclick="if(event.target===this)this.style.display='none'"
+  style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.6);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:16px">
+  <div style="background:var(--white);border-radius:var(--r-xl);width:100%;max-width:380px;padding:36px;border:1px solid var(--outline-lt)">
+    <div style="margin-bottom:24px">
+      <div style="font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--on-surface-dim);margin-bottom:6px">Restricted Access</div>
+      <div style="font-family:var(--font-display);font-size:26px;font-weight:500;color:var(--emerald)">Admin Portal</div>
+    </div>
+    <div id="admin-error" style="display:none;margin-bottom:16px;padding:10px 14px;background:#fef2f2;border:1px solid #fecaca;border-radius:8px;font-size:13px;color:var(--error)"></div>
+    <form id="admin-form" onsubmit="handleAdminLogin(event)" style="display:flex;flex-direction:column;gap:16px">
+      <div class="input-group">
+        <label class="input-label">Email</label>
+        <input id="admin-email" type="email" required autocomplete="off" placeholder="admin@banahub.com" class="input"/>
+      </div>
+      <div class="input-group">
+        <label class="input-label">Password</label>
+        <input id="admin-pw" type="password" required autocomplete="current-password" placeholder="••••••••••" class="input"/>
+      </div>
+      <button id="admin-btn" type="submit" class="btn btn-primary" style="justify-content:center;width:100%;padding:14px">Access Admin</button>
+    </form>
+    <button onclick="document.getElementById('admin-modal-overlay').style.display='none'" style="position:absolute;top:16px;right:16px;background:none;border:none;cursor:pointer;font-size:20px;color:var(--outline)">✕</button>
+  </div>
+</div>
+
+<script>
+/* ── Nav auth ───────────────────────────────────────────────── */
+(function() {
+  const token = localStorage.getItem('bana_access_token');
+  const user  = JSON.parse(localStorage.getItem('bana_user') || '{}');
+  if (!token) return;
+  const role = user.role || 'member';
+  const dest = role === 'admin' ? 'admin.html' : role === 'investor' ? 'dashboard-investor.html' : role === 'provider' ? 'dashboard-provider.html' : 'dashboard-business.html';
+  const login = document.getElementById('nav-login');
+  const apply = document.getElementById('nav-apply');
+  if (login) { login.href = dest; login.textContent = 'Dashboard'; }
+  if (apply) { apply.href = dest; apply.textContent = 'My Portal'; }
+})();
+
+/* ── Mobile nav ─────────────────────────────────────────────── */
+(function() {
+  const toggle = document.getElementById('nav-toggle');
+  const mob    = document.getElementById('mobile-menu');
+  if (!toggle || !mob) return;
+  toggle.style.display = 'block';
+  toggle.addEventListener('click', () => {
+    const open = mob.style.display === 'flex';
+    mob.style.display = open ? 'none' : 'flex';
+  });
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) { mob.style.display = 'none'; toggle.style.display = 'none'; }
+    else { toggle.style.display = 'block'; }
+  });
+  if (window.innerWidth <= 768) toggle.style.display = 'block';
+  else toggle.style.display = 'none';
+})();
+
+/* ── Scroll shadow ──────────────────────────────────────────── */
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('main-nav');
+  if (nav) nav.style.boxShadow = scrollY > 20 ? '0 2px 20px rgba(0,0,0,0.08)' : '';
+}, { passive: true });
+
+/* ── 4-click logo admin ─────────────────────────────────────── */
+let _lc = 0, _lt;
+document.getElementById('nav-logo-link')?.addEventListener('click', (e) => {
+  _lc++; clearTimeout(_lt);
+  _lt = setTimeout(() => _lc = 0, 1800);
+  if (_lc === 4) {
+    _lc = 0;
+    const m = document.getElementById('admin-modal-overlay');
+    m.style.display = 'flex';
+    document.getElementById('admin-email').focus();
+    document.getElementById('admin-error').style.display = 'none';
+    document.getElementById('admin-form').reset();
+  }
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') document.getElementById('admin-modal-overlay').style.display = 'none';
+});
+
+/* ── Admin login ────────────────────────────────────────────── */
+async function handleAdminLogin(e) {
+  e.preventDefault();
+  const btn = document.getElementById('admin-btn');
+  const err = document.getElementById('admin-error');
+  btn.disabled = true; btn.textContent = 'Authenticating…'; err.style.display = 'none';
+  try {
+    const res  = await fetch('/api/auth/login', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ email: document.getElementById('admin-email').value, password: document.getElementById('admin-pw').value }) });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'Invalid credentials');
+    if (data.member?.role !== 'admin') throw new Error('Not authorised as admin');
+    localStorage.setItem('bana_access_token',  data.accessToken);
+    localStorage.setItem('bana_refresh_token', data.refreshToken);
+    localStorage.setItem('bana_user', JSON.stringify(data.member));
+    window.location.href = 'admin.html';
+  } catch (ex) {
+    err.textContent = ex.message; err.style.display = 'block';
+    btn.disabled = false; btn.textContent = 'Access Admin';
+  }
+}
+
+/* ── Intersection observer animations ───────────────────────── */
+const obs = new IntersectionObserver(entries => entries.forEach(e => {
+  if (e.isIntersecting) { e.target.style.animationPlayState = 'running'; obs.unobserve(e.target); }
+}), { threshold: 0.1 });
+document.querySelectorAll('.anim-up, .anim-in, .anim-scale').forEach(el => {
+  el.style.opacity = '0'; el.style.animationPlayState = 'paused'; obs.observe(el);
+});
+</script>
+</body>
+</html>
